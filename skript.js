@@ -3,6 +3,7 @@ var matrika; //resen sudoku
 var inicializirano = false;
 
 function resetSudokuPanel() {
+	inicializirano = false;
     brezpogojnoPrebarvajCelotnoPloscoOkvir("grey");
     brezpogojnoPrebarvajCelotnoPloscoPolje("white")
     var polje;
@@ -138,11 +139,13 @@ function izpisiMatriko(matrika) {
 
 function pocasnoIzginjanje(sporocilo) { // sprejme DOM objekt in povzroči njegovo počasno izginjanje
     sporocilo.style.opacity = "1.0";
-    setInterval(function() {
+    var interval=setInterval(function() {
         if (sporocilo.style.opacity < "0.4") {
             sporocilo.style.display = "none";
             sporocilo.style.opacity = "1.0";
-            clearInterval();
+            return;
+            clearInterval(interval);
+
         }
         sporocilo.style.opacity = sporocilo.style.opacity - "0.01";
 
