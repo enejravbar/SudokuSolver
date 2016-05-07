@@ -138,13 +138,14 @@ function izpisiMatriko(matrika) {
 }
 
 function pocasnoIzginjanje(sporocilo) { // sprejme DOM objekt in povzroči njegovo počasno izginjanje
+    sporocilo.style.display = "block";
     sporocilo.style.opacity = "1.0";
     var interval=setInterval(function() {
         if (sporocilo.style.opacity < "0.4") {
             sporocilo.style.display = "none";
             sporocilo.style.opacity = "1.0";
-            return;
             clearInterval(interval);
+            return;
 
         }
         sporocilo.style.opacity = sporocilo.style.opacity - "0.01";
